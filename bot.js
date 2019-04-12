@@ -2,7 +2,7 @@ const logger = require('./logger');
 const BotAPI = require('node-telegram-bot-api');
 const process = require('process');
 const html_msg = require('./html-msg');
-const utils = require('./utils');
+const dotenv = require('./.env');
 
 const db = require('./db');
 
@@ -21,7 +21,7 @@ Bot.delete_invalid = function() {
 }
 
 Bot.create_bot = function() {
-	const bot = new BotAPI(process.env.TELEGRAM_TOKEN, {polling: true});
+	const bot = new BotAPI(dotenv.telegram_token, {polling: true});
 
 	const send = function(msg, txt) {
 		Bot.sendMessage(msg.chat.id, txt, {
@@ -32,7 +32,7 @@ Bot.create_bot = function() {
 
 	Bot.bot = bot;
 
-	Bot.sendMessage(utils.admin_id, "<code>Booting up.</code>", {parse_mode: 'html'});
+	Bot.sendMessage(dotenv.admin_id, "<code>Booting up.</code>", {parse_mode: 'html'});
 }
 
 /* Tries to send a message, logging errors. */

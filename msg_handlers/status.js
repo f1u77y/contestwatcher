@@ -2,7 +2,7 @@
 const logger = require('../logger');
 const Bot = require('../bot');
 const db = require('../db');
-const utils = require('../utils');
+const dotenv = require('../.env');
 const html_msg = require('../html-msg');
 
 const stat = module.exports = {};
@@ -10,7 +10,7 @@ const stat = module.exports = {};
 stat.init = function() {
 	/* If this command comes from adms, useful stats are returned */
 	Bot.bot.onText(/^\/status(@\w+)*$/, (message) => {
-		if(message.chat.id != utils.admin_id) return;
+		if(message.chat.id != dotenv.admin_id) return;
 		let text = Bot.delete_invalid();
 		let recent = 0, valid = 0, notified = 0;
 		const now = Date.now();

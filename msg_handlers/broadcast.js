@@ -2,7 +2,7 @@
 const logger = require('../logger');
 const Bot = require('../bot');
 const db = require('../db');
-const utils = require('../utils');
+const dotenv = require('../.env');
 
 const broadcast = module.exports = {};
 
@@ -16,7 +16,7 @@ broadcast.init = function() {
 	/* If this command comes from adms, replies to them with the same message.
 	 * Used to test if /broadcast is correctly formatted */
 	bot.onText(/^\/mock_broadcast(@\w+)* .*$/, (message) => {
-		if(message.chat.id != utils.admin_id) return;
+		if(message.chat.id != dotenv.admin_id) return;
 		let text = message.text.slice(message.text.indexOf(' ') + 1);
 		Bot.sendMessage(message.chat.id, text, {
 			parse_mode: 'Markdown',
@@ -27,7 +27,7 @@ broadcast.init = function() {
 	/* If this command comes from adms, sends the messsage after the command
 	 * to all users */
 	bot.onText(/^\/broadcast(@\w+)* .*$/, (message) => {
-		if(message.chat.id != utils.admin_id) return;
+		if(message.chat.id != dotenv.admin_id) return;
 		let text = message.text.slice(message.text.indexOf(' ') + 1);
 		last_broadcast = {};
 		db.low
@@ -47,7 +47,7 @@ broadcast.init = function() {
 	/* If this command comes from adms, edits the last sent
 	 * broadcast message. Use with care. */
 	bot.onText(/^\/edit_broadcast(@\w+)* .*$/, (message) => {
-		if(message.chat.id != utils.admin_id) return;
+		if(message.chat.id != dotenv.admin_id) return;
 		let text = message.text.slice(message.text.indexOf(' ') + 1);
 		db.low
 			.get('users')

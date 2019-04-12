@@ -8,3 +8,4 @@ npm-debug.log
 run.log
 .idea
 *.gz
+.env.json
