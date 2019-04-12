@@ -1,8 +1,5 @@
 # ContestWatcherBot
-ContestWatcherBot is a Telegram bot that keeps track of all the major online programming contests. It sends you notifications one day and one hour before each event. Try it your self at https://t.me/contestwatcherbot
-
-## Contributions
-Unfortunately, we have stalled the development for this bot and are not merging pull requests. You are welcome to fork this project and apply any features you wish.
+ContestWatcherBot is a Telegram bot that keeps track of all the major online programming contests. It sends you notifications one day and one hour before each event. Try it your self at https://t.me/ContestWatcher2Bot
 
 ## Judges
 Currently we support the following websites:
@@ -21,4 +18,3 @@ Since Codeforces has a very nice [API](http://codeforces.com/api/help) we can ke
 ## Contributing
 
 We gladly accept contributions! We plan to write better documentation for the code, but if you feel like you can contribute, you are very welcome to do so :-)
-
