@@ -29,7 +29,6 @@
   "license": "ISC",
   "dependencies": {
     "async-semaphore": "^2.0.0",
-    "botanio": "^0.0.6",
     "dateformat": "^2.0.0",
     "ical": "^0.6.0",
     "jsdom": "^9.11.0",
