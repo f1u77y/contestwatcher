@@ -22,8 +22,8 @@ module.exports = {
 	updateUpcoming: (upcoming) => {
 		const emitter = new EventEmitter();
 
-		jsdom.env("https://atcoder.jp/contest",
-			["http://code.jquery.com/jquery.js"],
+		jsdom.env("https://atcoder.jp/contests/",
+			["https://code.jquery.com/jquery.js"],
 			(err, window) => {
 				if (err) {
 					logger.error("Failed on AtCoder.", err);
@@ -34,7 +34,7 @@ module.exports = {
 				/* There's no specific classes or ids for the tables.
 					We gather information of the tables that follow the "Active Contests" and "Upcoming Contests" headers.
 					*/
-				var contests = $(':header:contains("Active Contests"), :header:contains("Upcoming Contests") + div').children('table').children('tbody').children('tr');
+				var contests = $(':header:contains("Active Contests"), :header:contains("Upcoming Contests") + div > .table-responsive').children('table').children('tbody').children('tr');
 				contests.each(function (){
 					const row = $(this).children('td');
 					const name = row.eq(1).find('a').text();
@@ -44,7 +44,8 @@ module.exports = {
 
 					const start = moment.tz(row.eq(0).find('a').text(), 'YYYY/MM/DD HH:mm', 'Asia/Tokyo');
 					const duration = row.eq(2).text().split(':'); /* HH:mm */
-					const url = row.eq(1).find('a').attr('href');
+					const href = row.eq(1).find('a').attr('href');
+                    const url = `https://atcoder.jp${href}`;
 					if(!start.isValid() || !valid(duration)) {
 						logger.error("AtCoder invalid dates for " + name);
 						logger.error("\t Start: " + start);
