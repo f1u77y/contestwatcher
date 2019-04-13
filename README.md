@@ -18,3 +18,9 @@ Since Codeforces has a very nice [API](http://codeforces.com/api/help) we can ke
 ## Contributing
 
 We gladly accept contributions! We plan to write better documentation for the code, but if you feel like you can contribute, you are very welcome to do so :-)
+
+## License
+
+All commits before `35311d8` are licensed under terms of MIT License (see LICENSE.MIT).
+All other code is released to public domain (see UNLICENSE). All code you will contribute
+would also be realeased to public domain if you haven't stated otherwise.
